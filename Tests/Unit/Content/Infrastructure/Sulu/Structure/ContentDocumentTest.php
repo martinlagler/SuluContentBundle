@@ -180,8 +180,8 @@ class ContentDocumentTest extends TestCase
         $content = $this->prophesize(TemplateInterface::class);
         $content->willImplement(AuthorInterface::class);
         $content->getLastModifiedEnabled()->willReturn(true);
-        $authored = new \DateTime('2020-01-01');
-        $lastModified = new \DateTime('2022-01-01');
+        $authored = new \DateTimeImmutable('2020-01-01');
+        $lastModified = new \DateTimeImmutable('2022-01-01');
         $content->getLastModified()->willReturn($lastModified);
         $content->getAuthored()->willReturn($authored);
         $document = $this->createContentDocument($content->reveal());
@@ -194,7 +194,7 @@ class ContentDocumentTest extends TestCase
     public function testSetLastModified(): void
     {
         $this->expectException(\BadMethodCallException::class);
-        $lastModified = new \DateTime('2020-01-01');
+        $lastModified = new \DateTimeImmutable('2020-01-01');
         $document = $this->createContentDocument();
 
         $document->setLastModified($lastModified);

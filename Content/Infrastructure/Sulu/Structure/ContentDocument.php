@@ -166,7 +166,7 @@ class ContentDocument implements ExtensionBehavior, LocalizedAuthorBehavior
         return null;
     }
 
-    public function getLastModified(): ?\DateTime
+    public function getLastModified(): ?\DateTimeImmutable
     {
         if ($this->content instanceof AuthorInterface) {
             return $this->content->getLastModified();
@@ -176,14 +176,17 @@ class ContentDocument implements ExtensionBehavior, LocalizedAuthorBehavior
     }
 
     /**
-     * @param \DateTime|null $lastModified
+     * @param \DateTimeImmutable|null $lastModified
      */
     public function setLastModified($lastModified): void
     {
         throw $this->createReadOnlyException(__METHOD__);
     }
 
-    public function getAuthored(): ?\DateTime
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getAuthored()
     {
         if ($this->content instanceof AuthorInterface) {
             return $this->content->getAuthored();

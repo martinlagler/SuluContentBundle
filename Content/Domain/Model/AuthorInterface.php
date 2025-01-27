@@ -19,15 +19,15 @@ interface AuthorInterface
 {
     public function getLastModifiedEnabled(): ?bool;
 
-    public function getLastModified(): ?\DateTime;
+    public function getLastModified(): ?\DateTimeImmutable;
 
-    public function setLastModified(?\DateTime $lastModified): void;
+    public function setLastModified(?\DateTimeImmutable $lastModified): void;
 
     public function getAuthor(): ?ContactInterface;
 
     public function setAuthor(?ContactInterface $author): void;
 
-    public function getAuthored(): ?\DateTime;
+    public function getAuthored(): ?\DateTimeImmutable;
 
-    public function setAuthored(?\DateTime $authored): void;
+    public function setAuthored(?\DateTimeImmutable $authored): void;
 }
